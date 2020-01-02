@@ -1,11 +1,14 @@
 import React from "react";
-import { Input, Icon } from "antd";
+import { Menu, Dropdown, Input, Icon } from "antd";
 import styled from "styled-components";
 
 import brandLogo from "../../images/logomark.png";
 import sheldon from "../../images/sheldon.png";
 
+import DropdownMenu from "../DropdownMenu";
+
 const NavCon = styled.div`
+  color: #101010;
   display: flex;
   flex-direction: row;
   background: #fff;
@@ -42,15 +45,30 @@ const NavCon = styled.div`
   nav.rightNav {
     display: flex;
     align-items: center;
+    margin: 1.5em;
 
-    p {
-      margin: 0;
+    #inboxIcon:hover {
+      cursor: pointer;
     }
 
-    img {
-      width: 30px;
-      height: auto;
-      border-radius: 50%;
+    .profileMenu {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin: 0;
+        margin-right: 0.5em;
+      }
+
+      img {
+        width: 30px;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+
+    .profileMenu:hover {
+      cursor: pointer;
     }
   }
 `;
@@ -67,16 +85,31 @@ export const TopNavigation = () => {
           <Input
             id="search"
             placeholder="Search by project name"
-            prefix={<Icon type="search" style={{ color: "rgba(0,0,0,.25)", marginLeft: "3em"}} />}
+            prefix={
+              <Icon
+                type="search"
+                style={{ color: "rgba(0,0,0,.25)", marginLeft: "3em" }}
+              />
+            }
           />
         </div>
       </nav>
 
       <nav className="rightNav">
-        <Icon type="inbox" />
-        <p>Sheldon</p>
-        <img src={sheldon} alt="" />
-        <Icon type="caret-down" />
+        <Icon
+          id="inboxIcon"
+          type="inbox"
+          style={{ fontSize: "2.5rem", color: "#101010", marginRight: "1em" }}
+          theme="outlined"
+        />
+
+          <Dropdown overlay={DropdownMenu} placement="bottomRight">
+            <div className="profileMenu">
+              <p>Sheldon</p>
+              <img src={sheldon} alt="" />
+              <Icon type="caret-down" />
+            </div>
+          </Dropdown>
       </nav>
     </NavCon>
   );
