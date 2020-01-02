@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu } from 'antd'
+import { Menu, Icon } from 'antd'
 
 export const DropdownMenu = () => {
   return (
@@ -10,7 +10,7 @@ export const DropdownMenu = () => {
           rel="noopener noreferrer"
           href="http://www.alipay.com/"
         >
-          1st menu item
+          View Profile
         </a>
       </Menu.Item>
       <Menu.Item key="1">
@@ -19,12 +19,22 @@ export const DropdownMenu = () => {
           rel="noopener noreferrer"
           href="http://www.taobao.com/"
         >
-          2nd menu item
+          Requests
+        </a>
+      </Menu.Item>
+      <Menu.Item key="2">
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="http://www.taobao.com/"
+        >
+          Account Settings
         </a>
       </Menu.Item>
       <Menu.Divider />
-      <Menu.Item key="3" disabled>
-        3rd menu item（disabled）
+      <Menu.Item key="3">
+        <Icon type="logout" />
+        Logout
       </Menu.Item>
     </Menu>
   );

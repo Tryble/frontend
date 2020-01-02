@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Dropdown, Input, Icon } from "antd";
+import { Dropdown, Input, Icon } from "antd";
 import styled from "styled-components";
 
 import brandLogo from "../../images/logomark.png";
@@ -15,7 +15,7 @@ const NavCon = styled.div`
   width: 100vw;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #c4c4c4;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
 
   nav.leftNav {
     display: flex;
