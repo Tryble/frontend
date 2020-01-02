@@ -8,7 +8,7 @@ import {
     UPDATE_PROJECT_START,
     UPDATE_PROJECT_SUCCESS,
     UPDATE_PROJECT_FAIL
-} from '../types';
+} from '../types'
 
 
 const initialState = {
@@ -81,7 +81,7 @@ const project = (state = initialState, {type, payload}) => {
                 updatingProject: false,
                 projectError: payload
             }
-            
+
         default:
             return state;
     }
