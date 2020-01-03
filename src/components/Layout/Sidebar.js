@@ -18,13 +18,6 @@ const StyledSideNav = styled.div`
   padding-top: 10px;
 `;
 
-// function SideNav() {
-//   return (
-//     <div>
-//     </div>
-//   );
-// }
-
 export default function SideBar(props) {
   const [showModal, setShowModal] = useState(false);
 
@@ -38,9 +31,6 @@ export default function SideBar(props) {
     setShowModal(false);
   };
 
-  const handleClick = () => {
-    console.log("clicked");
-  };
   return (
     <div>
       <StyledSideNav>
