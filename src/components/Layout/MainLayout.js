@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PrivateRoute from '../Router/PrivateRoute';
+import Sidebar from '../Sidebar';
 import TopNavigation from '../TopNavigation';
 
 
@@ -10,9 +11,7 @@ const MainLayout = ({component: Component, ...rest}) => {
       <StyledContainer>
         <TopNavigation />
         <div className="main-content">
-          <div className="sidebar">
-            <h1>Sidebar</h1>
-          </div>
+          <Sidebar />
           <div className="content-wrap">
             <Component {...matchProps} />
           </div>
