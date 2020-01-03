@@ -1,85 +1,36 @@
 import { 
-    ADD_PROJECT_START,
-    ADD_PROJECT_SUCCESS,
-    ADD_PROJECT_FAIL,
-    REMOVE_PROJECT_START,
-    REMOVE_PROJECT_SUCCESS,
-    REMOVE_PROJECT_FAIL,
-    UPDATE_PROJECT_START,
-    UPDATE_PROJECT_SUCCESS,
-    UPDATE_PROJECT_FAIL
+    FETCH_PROJECT_START,
+    FETCH_PROJECT_SUCCESS,
+    FETCH_PROJECT_FAIL
 } from '../types'
 
 
 const initialState = {
-    projects: [],
-    addingProject: false,
-    updatingProject: false,
-    removingProject: false,
-    projectError: ''
+    isLoading: false,
+    isLoaded: false,
+    projects: []
 }
 
 const project = (state = initialState, {type, payload}) => {
     switch(type) {
-
-        case ADD_PROJECT_START:
+        case FETCH_PROJECT_START:
             return {
                 ...state,
-                addingProject: true
+                isLoading: true
             }
 
-        case ADD_PROJECT_SUCCESS:
+        case FETCH_PROJECT_SUCCESS:
             return {
                 ...state,
-                addingProject: false,
+                isLoading: false,
+                isLoaded: true,
                 projects: payload
             }
 
-        case ADD_PROJECT_FAIL:
+        case FETCH_PROJECT_FAIL:
             return {
                 ...state,
-                addingProject: false,
-                projectError: payload
-            }
-
-        case REMOVE_PROJECT_START:
-            return {
-                ...state,
-                removingProject: true
-            }
-
-        case REMOVE_PROJECT_SUCCESS:
-            return {
-                ...state,
-                removingProject: true,
-                projects: payload
-            }
-
-        case REMOVE_PROJECT_FAIL:
-            return {
-                ...state,
-                removingProject: false,
-                projects: payload
-            }
-
-        case UPDATE_PROJECT_START:
-            return {
-                ...state,
-                updatingProject: true,
-            }
-
-        case UPDATE_PROJECT_SUCCESS:
-            return {
-                ...state,
-                updatingProject: false,
-                projects: payload
-            }
-
-        case UPDATE_PROJECT_FAIL:
-            return {
-                ...state,
-                updatingProject: false,
-                projectError: payload
+                isLoading: false,
             }
 
         default:

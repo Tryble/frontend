@@ -1,11 +1,11 @@
-import axios from 'axios'
-
 import withAuth from '../../utils/axios'
-
 import { 
     ADD_PROJECT_START,
     ADD_PROJECT_SUCCESS,
     ADD_PROJECT_FAIL,
+    FETCH_PROJECT_START,
+    FETCH_PROJECT_SUCCESS,
+    FETCH_PROJECT_FAIL,
     REMOVE_PROJECT_START,
     REMOVE_PROJECT_SUCCESS,
     REMOVE_PROJECT_FAIL,
@@ -14,6 +14,23 @@ import {
     UPDATE_PROJECT_FAIL
 } from '../types';
 
+
+export const fetchProject = () => async dispatch => {
+    dispatch({ type: FETCH_PROJECT_START});
+
+    try {
+        const { data } = withAuth().post('/projects');
+        dispatch({
+            type: FETCH_PROJECT_SUCCESS,
+            payload: data,
+        });
+    } catch(err) {
+        dispatch({
+            type: FETCH_PROJECT_FAIL
+        });
+    }
+
+}
 
 export const addProject = () => async dispatch => {
     dispatch({ type: ADD_PROJECT_START});

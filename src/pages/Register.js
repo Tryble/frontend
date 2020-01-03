@@ -7,7 +7,7 @@ import { Form, Input, Button, Typography } from 'antd';
 import { register } from '../store/actions/auth';
 
 
-const Register = ({ isAuthenticated, register }) => {
+const Register = ({ isAuthenticated, register, history }) => {
 
   const { Title } = Typography;
 
@@ -37,6 +37,7 @@ const Register = ({ isAuthenticated, register }) => {
           setSubmitting(true);
           await register(values);
           setSubmitting(false);
+          history.push('/');
         }}
       >
         {({handleSubmit, handleChange, handleBlur, values, errors, isSubmitting, touched}) => (
