@@ -27,13 +27,13 @@ export default MainLayout;
 const StyledContainer = styled.div`
   height: 100vh;
   width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 
   .main-content {
     display: flex;
-    flex: auto;
+    height: 100vh;
+    overflow: hidden;
 
     & > div {
       height: 100%;
@@ -46,8 +46,11 @@ const StyledContainer = styled.div`
   }
 
   .content-wrap {
-    padding: 2rem;
+    padding: 4rem 2rem;
     background: #f9f7ff;
     flex: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    position: relative;
   }
 `

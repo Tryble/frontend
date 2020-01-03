@@ -36,7 +36,7 @@ export const login = (values) => async dispatch => {
         const { data } = await axios.post('/auth/login', values);
         dispatch({
             type: LOGIN_SUCCESS,
-            payload: data,
+            payload: data
         });
     } catch(err) {
         dispatch({
