@@ -12,8 +12,8 @@ const initialState = {
 };
 
 const tribesArr = [
-  { id: 1, name: "Lambda" },
-  { id: 2, name: "Pi" }
+  { id: 1, name: "Underground" },
+  { id: 2, name: "Lambda" }
 ];
 
 export function SideBar() {
