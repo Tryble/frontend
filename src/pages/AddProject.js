@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Input, Upload, Icon, message } from 'antd';
+import { Input, Upload, Icon, message, DatePicker, Button } from 'antd';
+import OptionsPicker from '../components/OptionsPicker';
+
 
 const { Dragger } = Upload;
+const { TextArea } = Input;
 
 const ProjectFormCon = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   background: #fff;
   
@@ -25,8 +26,7 @@ const ProjectFormCon = styled.div`
         margin-bottom: 2em;
 
         span {
-
-          .labelText {
+          &.labelText {
             font-weight: 600;
           }
         }
@@ -40,20 +40,64 @@ const ProjectFormCon = styled.div`
           color: #6d6d6d;
         }
 
-      }
-
-      .rightForm {
-        display: flex;
-        flex-direction: column;
-
-        span.ant-upload.ant-upload-drag {
-          
+        textArea {
+          padding-left: 1em;
+          border-radius: 0.3em;
+          border: none;
+          background: #f2f2f2;
+          width: 300px;
+          color: #6d6d6d;
         }
 
+      }
+
+      &.rightForm {
+        display: flex;
+        flex-direction: column;
       }
     }
   }
 `;
+
+const DatePickerCon = styled.div`
+  margin-top: 2em;
+
+  .startDate {
+    margin-bottom: 1em;
+  }
+
+  input {
+
+    &.ant-calendar-picker-input {
+      width: 200px;
+    }
+  }
+`;
+
+const UploadImageCon = styled.div`
+  width: 200px;
+`;
+
+const BottomDiv = styled.div`
+  display: flex;
+  justify-content: flex-end;
+
+
+  button {
+    &.ant-btn.create {
+      background: #392959;
+      color: #fff;
+      margin-right: 1em;
+    }
+
+    &.ant-btn.cancel {
+      border: 2px solid #392959;
+      color: #392959;
+    }
+
+  }
+`;
+
 
 export const AddProject = () => {
 
@@ -73,6 +117,10 @@ export const AddProject = () => {
       }
     },
   };
+
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  }
 
   return (
     <ProjectFormCon>
@@ -99,7 +147,7 @@ export const AddProject = () => {
               Give more details about your project
             </span>
             <br />
-            <Input />
+            <TextArea rows={4} />
           </label>
 
           <label>
@@ -107,21 +155,12 @@ export const AddProject = () => {
               Pick required roles
             </span>
             <span className="supportText">(8 roles maximum)</span><br />
-            <Input />
-          </label>
-
-          <label>
-            <span className="labelText">
-              Describe your project in one sentence
-            </span>
-            Project Name<br />
-            <Input />
+            <OptionsPicker />
           </label>
         </div>
 
         <div className="rightForm">
-          <div style={{ width: "200px" }}>
-
+          <UploadImageCon>
             <Dragger {...props}>
               <p className="ant-upload-drag-icon">
                 <Icon type="inbox" />
@@ -129,18 +168,32 @@ export const AddProject = () => {
               <p className="ant-upload-text">Click or drag file to this area to upload</p>
               <p className="ant-upload-hint">Maximum file size 12MB</p>
             </Dragger>
-          </div>
+          </UploadImageCon>
 
-          <div>
-            Date picker
-          </div>
+          <DatePickerCon>
+            <div className="startDate">
+              Start Date<br />
+              <DatePicker onChange={onChange} />
+            </div>
+
+            <div className="endDate">
+              End Date<br />
+              <DatePicker onChange={onChange} />
+            </div>
+          </DatePickerCon>
         </div>
       </form>
 
-      <div>
-        <button>Create Project</button>
-        <button>Cancel</button>
-      </div>
+      <BottomDiv>
+        <Button className="create">
+          Create Project
+            <Icon type="check" />
+        </Button>
+
+        <Button className="cancel">
+          Cancel
+        </Button>
+      </BottomDiv>
 
     </ProjectFormCon>
   )
