@@ -56,6 +56,7 @@ const NavCon = styled.div`
       align-items: center;
 
       p {
+        font-weight: 500;
         margin: 0;
         margin-right: 0.5em;
       }
@@ -103,13 +104,13 @@ export const TopNavigation = () => {
           theme="outlined"
         />
 
-          <Dropdown overlay={DropdownMenu} placement="bottomRight">
-            <div className="profileMenu">
-              <p>Sheldon</p>
-              <img src={sheldon} alt="" />
-              <Icon type="caret-down" />
-            </div>
-          </Dropdown>
+        <Dropdown overlay={DropdownMenu} placement="bottomRight">
+          <div className="profileMenu">
+            <p>Sheldon</p>
+            <img src={sheldon} alt="" />
+            <Icon type="caret-down" />
+          </div>
+        </Dropdown>
       </nav>
     </NavCon>
   );
