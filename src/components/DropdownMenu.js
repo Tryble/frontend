@@ -1,7 +1,8 @@
 import React from 'react';
 import { Menu, Icon } from 'antd'
 
-export const DropdownMenu = () => {
+
+const DropdownMenu = () => {
   return (
     <Menu>
       <Menu.Item key="0">

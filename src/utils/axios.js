@@ -2,7 +2,7 @@ import axios from 'axios';
 import store from '../store';
 
 
-axios.defaults.baseURL = 'https://tracq-backend.herokuapp.com/api/v1';
+axios.defaults.baseURL = 'https://tryble.herokuapp.com/api';
 
 export default function withAuth() {
     const token = store.getState().auth.token;
