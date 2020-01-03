@@ -7,7 +7,6 @@ import Register from '../../pages/Register';
 import AuthLayout from '../Layout/AuthLayout';
 import MainLayout from '../Layout/MainLayout';
 
-
 const AppRouter = () => {
     return (
         <BrowserRouter>
