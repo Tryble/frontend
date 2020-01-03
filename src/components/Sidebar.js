@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Icon, Typography } from "antd";
-import AddTribesModal from "./AddTribesModal";
+import { connect } from "react-redux";
+// import * as actionCreators from "../store/ActionCreators";
+import AddTribesModalForm from "./AddTribesModalForm";
+import Tribes from "../pages/Tribes";
 
+const initialState = {
+  showModal: false,
+  loading: false
+};
 
+const tribesArr = [
+  { id: 1, name: "Underground" },
+  { id: 2, name: "Lambda" }
+];
 
-export default function SideBar() {
-
-  const [showModal, setShowModal] = useState(false);
+export function SideBar() {
+  const [modalState, setModalState] = useState(initialState);
 
   const { Title } = Typography;
 
   const handleOk = e => {
     e.preventDefault();
-    setShowModal(false);
+    setModalState({ loading: true });
+    setTimeout(() => {
+      setModalState({ showModal: false, loading: false });
+    }, 3000);
   };
 
   const handleCancel = e => {
     e.preventDefault();
-    setShowModal(false);
+    setModalState({ showModal: false });
   };
 
   return (
@@ -26,19 +39,30 @@ export default function SideBar() {
       <StyledSideNav>
         <div className="title-bar">
           <Title level={3}>Tribes</Title>
-          <button onClick={() => setShowModal(true)}>
+          <button onClick={() => setModalState({ showModal: true })}>
             <Icon type="plus" />
           </button>
         </div>
+        <Tribes tribesArr={tribesArr} />
       </StyledSideNav>
-      <AddTribesModal
-        show={showModal}
+      <AddTribesModalForm
+        show={modalState.showModal}
         onCancel={handleCancel}
         onOk={handleOk}
       />
     </>
   );
 }
+const mapStateToProps = state => {
+  return {
+    tribes: state.appState
+  };
+};
+
+export default connect(
+  mapStateToProps
+  // actionCreators
+)(SideBar);
 
 const StyledSideNav = styled.div`
   max-width: 250px;
@@ -66,8 +90,8 @@ const StyledSideNav = styled.div`
     button {
       border: none;
       outline: none;
-      background: #52446e
-      padding: .25rem;
+      background: #52446e;
+      padding: 0.25rem;
       height: 20px;
       display: flex;
     }
