@@ -5,7 +5,7 @@ import styled from "styled-components";
 import brandLogo from "../../images/logomark.png";
 import sheldon from "../../images/sheldon.png";
 
-import DropdownMenu from "../DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 
 const NavCon = styled.div`
   color: #101010;
