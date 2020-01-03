@@ -8,7 +8,9 @@ import axios from "axios";
 
 export function AddTribesModalForm(props) {
   const initialAddTribeForm = {
-    tribeName: ""
+    tribeName: "",
+    imagesUrl:
+      "https://i.pinimg.com/236x/d0/85/5d/d0855d1ef628012eeeeaf8b4a7eb701e.jpg"
   };
 
   const [newTribe, setNewTribe] = useState(initialAddTribeForm);
@@ -18,6 +20,7 @@ export function AddTribesModalForm(props) {
       ...newTribe,
       tribeName: e.target.value
     });
+    console.log(newTribe);
   };
 
   const handleSubmit = e => {
@@ -34,12 +37,12 @@ export function AddTribesModalForm(props) {
       <form>
         <Modal
           visible={props.show}
-          onOk={props.onOk}
+          onOk={handleSubmit}
           onCancel={props.onCancel}
           footer={[
             <Button
               key="back"
-              onClick={props.onOk}
+              onClick={handleSubmit}
               style={{
                 backgroundColor: "#392959",
                 color: "white",
@@ -78,7 +81,7 @@ export function AddTribesModalForm(props) {
                 name="tribeName"
                 onChange={handleChange}
                 placeholder=" Enter a name... "
-                // value="value"
+                value={newTribe.tribeName}
               ></StyledInput>
             </div>
             <div>
