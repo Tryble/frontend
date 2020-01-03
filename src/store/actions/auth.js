@@ -8,7 +8,8 @@ import {
     LOGIN_SUCCESS,
     LOGOUT_SUCCESS,
     REGISTER_SUCCESS,
-    USER_AUTHENTICATED
+    USER_AUTHENTICATED,
+    GET_ERRORS
 } from '../types';
 
 
@@ -41,6 +42,13 @@ export const login = (values) => async dispatch => {
         dispatch({
             type: LOGIN_FAIL
         });
+        dispatch({
+            type: GET_ERRORS,
+            payload: {
+                msg: err.response.data.error,
+                status: err.response.status
+            }
+        });
     }
 
 }
@@ -56,6 +64,13 @@ export const register = (values) => async dispatch => {
         dispatch({
             type: REGISTER_FAIL
         });
+        dispatch({
+            type: GET_ERRORS,
+            payload: {
+                msg: err.response.data.error,
+                status: err.response.status
+            }
+        });
     }
 
 }
@@ -68,7 +83,13 @@ export const logout = () => async dispatch => {
             type: LOGOUT_SUCCESS,
         });
     } catch(err) {
-        
+        dispatch({
+            type: GET_ERRORS,
+            payload: {
+                msg: err.response.data.error,
+                status: err.response.status
+            }
+        });
     }
 
 }
