@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import "antd/dist/antd.css";
-import { Modal, Button } from "antd";
+import { Modal } from "antd";
+
 
 export default function AddTribesModal(props) {
   return (

@@ -1,11 +1,54 @@
 import React from "react";
-import { Dropdown, Input, Icon } from "antd";
 import styled from "styled-components";
-
-import brandLogo from "../../images/logomark.png";
-import sheldon from "../../images/sheldon.png";
-
+import { Dropdown, Input, Icon } from "antd";
 import DropdownMenu from "./DropdownMenu";
+import brandLogo from "../assets/images/logomark.png";
+import sheldon from "../assets/images/sheldon.png";
+
+
+const TopNavigation = () => {
+  return (
+    <NavCon>
+      <nav className="leftNav">
+        <div className="brandLogo">
+          <img src={brandLogo} alt="tryble-logo" />
+        </div>
+
+        <div>
+          <Input
+            id="search"
+            placeholder="Search by project name"
+            prefix={
+              <Icon
+                type="search"
+                style={{ color: "rgba(0,0,0,.25)", marginLeft: "3em" }}
+              />
+            }
+          />
+        </div>
+      </nav>
+
+      <nav className="rightNav">
+        <Icon
+          id="inboxIcon"
+          type="inbox"
+          style={{ fontSize: "2.5rem", color: "#101010", marginRight: "1em" }}
+          theme="outlined"
+        />
+
+        <Dropdown overlay={DropdownMenu} placement="bottomRight">
+          <div className="profileMenu">
+            <p>Sheldon</p>
+            <img src={sheldon} alt="" />
+            <Icon type="caret-down" />
+          </div>
+        </Dropdown>
+      </nav>
+    </NavCon>
+  );
+};
+
+export default TopNavigation;
 
 const NavCon = styled.div`
   color: #101010;
@@ -73,47 +116,3 @@ const NavCon = styled.div`
     }
   }
 `;
-
-export const TopNavigation = () => {
-  return (
-    <NavCon>
-      <nav className="leftNav">
-        <div className="brandLogo">
-          <img src={brandLogo} alt="tryble-logo" />
-        </div>
-
-        <div>
-          <Input
-            id="search"
-            placeholder="Search by project name"
-            prefix={
-              <Icon
-                type="search"
-                style={{ color: "rgba(0,0,0,.25)", marginLeft: "3em" }}
-              />
-            }
-          />
-        </div>
-      </nav>
-
-      <nav className="rightNav">
-        <Icon
-          id="inboxIcon"
-          type="inbox"
-          style={{ fontSize: "2.5rem", color: "#101010", marginRight: "1em" }}
-          theme="outlined"
-        />
-
-        <Dropdown overlay={DropdownMenu} placement="bottomRight">
-          <div className="profileMenu">
-            <p>Sheldon</p>
-            <img src={sheldon} alt="" />
-            <Icon type="caret-down" />
-          </div>
-        </Dropdown>
-      </nav>
-    </NavCon>
-  );
-};
-
-export default TopNavigation;
