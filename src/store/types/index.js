@@ -37,6 +37,6 @@ export const REMOVE_TRIBE_FAIL = 'REMOVE_TRIBE_FAIL';
 export const UPDATE_TRIBE_START = 'UPDATE_TRIBE_START';
 export const UPDATE_TRIBE_SUCCESS = 'UPDATE_TRIBE_SUCCESS';
 export const UPDATE_TRIBE_FAIL = 'UPDATE_TRIBE_FAIL';
-=======
+
 // Errors
 export const GET_ERRORS = 'GET_ERRORS';
