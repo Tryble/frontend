@@ -9,9 +9,9 @@ module.exports = override(
     addLessLoader({
         javascriptEnabled: true,
         modifyVars: {
-            '@primary-color': '#0060FF',
+            '@primary-color': '#000531',
             '@white': '#fff',
-            '@black': '#000',
+            '@black': '#101010',
             '@text-color': 'fade(@black, 65%)',
             '@text-color-secondary': 'fade(@black, 45%)'
         }
