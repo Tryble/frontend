@@ -4,7 +4,6 @@ import Login from '../../pages/Login';
 import AuthLayout from '../Layout/AuthLayout';
 // import MainLayout from '../Layout/AuthLayout';
 
-
 const AppRouter = () => {
     return (
         <BrowserRouter>
