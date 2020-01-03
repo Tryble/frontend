@@ -4,11 +4,17 @@ import { Icon, Typography } from "antd";
 import { connect } from "react-redux";
 // import * as actionCreators from "../store/ActionCreators";
 import AddTribesModalForm from "./AddTribesModalForm";
+import Tribes from "../pages/Tribes";
 
 const initialState = {
   showModal: false,
   loading: false
 };
+
+const tribesArr = [
+  { id: 1, name: "Lambda" },
+  { id: 2, name: "Pi" }
+];
 
 export function SideBar() {
   const [modalState, setModalState] = useState(initialState);
@@ -37,6 +43,7 @@ export function SideBar() {
             <Icon type="plus" />
           </button>
         </div>
+        <Tribes tribesArr={tribesArr} />
       </StyledSideNav>
       <AddTribesModalForm
         show={modalState.showModal}
