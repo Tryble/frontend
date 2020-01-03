@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { returnErrors } from './messages';
 import withAuth from '../../utils/axios';
 import {
     LOGIN_FAIL,
@@ -47,9 +46,8 @@ export const login = (values) => async dispatch => {
 }
 
 export const register = (values) => async dispatch => {
-
     try {
-        const { data } = await axios.post('/auth', values);
+        const { data } = await axios.post('/auth/register', values);
         dispatch({
             type: REGISTER_SUCCESS,
             payload: data,

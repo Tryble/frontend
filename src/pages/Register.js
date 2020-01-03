@@ -4,10 +4,10 @@ import { Formik } from 'formik';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { Form, Input, Button, Typography } from 'antd';
-import { login } from '../store/actions/auth';
+import { register } from '../store/actions/auth';
 
 
-const Login = ({ isAuthenticated, login }) => {
+const Register = ({ isAuthenticated, register }) => {
 
   const { Title } = Typography;
 
@@ -17,11 +17,15 @@ const Login = ({ isAuthenticated, login }) => {
 
     return (
         <>
-          <Title level={3}>Log In</Title>
+          <Title level={3}>Sign Up</Title>
             
           <Formik 
-            initialValues={{email: '', password: ''}}
+            initialValues={{firstName: '', lastName: '', email: '', password: ''}}
             validationSchema={Yup.object({
+              firstName: Yup.string()
+                .required('First Name is required'),
+              lastName: Yup.string()
+                .required('Last Name is required'),
               email: Yup.string()
                 .required('Email is required')
                 .email('Please provide a valid Email Address'),
@@ -31,12 +35,48 @@ const Login = ({ isAuthenticated, login }) => {
             onSubmit={async (values, {setSubmitting, resetForm}) => {
                 resetForm({});
                 setSubmitting(true);
-                await login(values);
+                await register(values);
                 setSubmitting(false);
             }}
           >
             {({handleSubmit, handleChange, handleBlur, values, errors, isSubmitting, touched}) => (
                 <Form onSubmit={handleSubmit}>
+                    <Form.Item
+                      hasFeedback
+                      validateStatus={
+                          touched.firstName && errors.firstName ? 'error' : 
+                          touched.firstName && !errors.firstName ? 'success' : null
+                      }
+                      help={touched.firstName && errors.firstName? errors.firstName : null}
+                    >
+                      <Input
+                        type="firstName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstName}
+                        name="firstName"
+                        placeholder="First Name"
+                      />
+                    </Form.Item>
+
+                    <Form.Item
+                      hasFeedback
+                      validateStatus={
+                          touched.lastName && errors.lastName ? 'error' : 
+                          touched.lastName && !errors.lastName ? 'success' : null
+                      }
+                      help={touched.lastName && errors.lastName? errors.lastName : null}
+                    >
+                      <Input
+                        type="lastName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.lastName}
+                        name="lastName"
+                        placeholder="Last Name"
+                      />
+                    </Form.Item>
+
                     <Form.Item
                         hasFeedback
                         validateStatus={
@@ -79,13 +119,13 @@ const Login = ({ isAuthenticated, login }) => {
                         loading={isSubmitting}
                         block
                     >
-                      Log In
+                      Sign Up
                     </Button>
                 </Form>
             )}
         </Formik>
 
-        <Link to="/register">Don't have an account?</Link>
+        <Link to="/login">Already have an account?</Link>
       </>
     )
 }
@@ -95,4 +135,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
 })
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { register })(Register);
