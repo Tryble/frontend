@@ -6,19 +6,21 @@ import Workspace from '../../pages/Workspace';
 import Register from '../../pages/Register';
 import AuthLayout from '../Layout/AuthLayout';
 import MainLayout from '../Layout/MainLayout';
+import AddProject from '../../pages/AddProject';
 
 
 const AppRouter = () => {
-    return (
-        <BrowserRouter>
-            <Switch>
-                <MainLayout exact path="/" component={Home} />
-                <MainLayout path="/workspace" component={Workspace} />
-                <AuthLayout path="/login" component={Login} />
-                <AuthLayout path="/register" component={Register} />
-            </Switch>
-        </BrowserRouter>
-    )
+  return (
+    <BrowserRouter>
+      <Switch>
+        <MainLayout exact path="/" component={Home} />
+        <MainLayout path="/workspace" component={Workspace} />
+        <MainLayout path="/add-project" component={AddProject} />
+        <AuthLayout path="/login" component={Login} />
+        <AuthLayout path="/register" component={Register} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
 
 export default AppRouter;
