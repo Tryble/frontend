@@ -1,11 +1,51 @@
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Icon } from 'antd';
 import sheldon from "../assets/images/sheldon.png";
+import { fetchProject } from '../store/actions/project';
+
 
 const Home = () => {
+
   return (
     <StyledContainer>
+      <div className="is-home-project-card">
+        <div className="flx-top-sb">
+          <div className="card-thumbnail">
+            <img src={sheldon} alt="Lolz" />
+          </div>
+          <button className="upvote-btn flx-center-sb">
+            <span>22</span>
+            <Icon type="up-circle" />
+          </button>
+        </div>
+
+        <div className="card-description">
+          <h2>Underdogs</h2>
+          <h3>M-Reel</h3>
+          <p>A music service that recognises your preference and recommends songs based on your listening pattern</p>
+        </div>
+      </div>
+
+      <div className="is-home-project-card">
+        <div className="flx-top-sb">
+          <div className="card-thumbnail">
+            <img src={sheldon} alt="Lolz" />
+          </div>
+          <button className="upvote-btn flx-center-sb">
+            <span>22</span>
+            <Icon type="up-circle" />
+          </button>
+        </div>
+
+        <div className="card-description">
+          <h2>Underdogs</h2>
+          <h3>M-Reel</h3>
+          <p>A music service that recognises your preference and recommends songs based on your listening pattern</p>
+        </div>
+      </div>
+
       <div className="is-home-project-card">
         <div className="flx-top-sb">
           <div className="card-thumbnail">
@@ -135,7 +175,13 @@ const Home = () => {
   )
 }
 
-export default Home;
+const mapStateToProps = state => ({
+  projects: state.project.projects,
+  isLoaded: state.project.isLoaded,
+  isLoading: state.project.isLoading
+})
+
+export default connect(mapStateToProps, { fetchProject })(Home);
 
 const StyledContainer = styled.div`
   width: 100%;

@@ -7,7 +7,7 @@ import { Form, Input, Button, Typography } from 'antd';
 import { login } from '../store/actions/auth';
 
 
-const Login = ({ isAuthenticated, login }) => {
+const Login = ({ isAuthenticated, login, history }) => {
 
   const { Title } = Typography;
 
@@ -29,10 +29,11 @@ const Login = ({ isAuthenticated, login }) => {
                 .required('Password is required')
             })}
             onSubmit={async (values, {setSubmitting, resetForm}) => {
-                resetForm({});
-                setSubmitting(true);
-                await login(values);
-                setSubmitting(false);
+              resetForm({});
+              setSubmitting(true);
+              await login(values);
+              setSubmitting(false);
+              history.push('/');
             }}
           >
             {({handleSubmit, handleChange, handleBlur, values, errors, isSubmitting, touched}) => (
